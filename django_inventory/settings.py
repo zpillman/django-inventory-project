@@ -40,10 +40,8 @@ INSTALLED_APPS = [
     'inventory.apps.InventoryConfig',
     'material',
     'material.frontend',
-    'material.theme',
-    'viewflow',
-    'viewflow.frontend',
-
+    'material.theme.cyan',
+    'viewflow'
 ]
 
 MIDDLEWARE = [
@@ -83,11 +81,6 @@ WSGI_APPLICATION = 'django_inventory.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-
-    'postgres': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django_inventory',
         'USER': 'robot',
