@@ -10,15 +10,21 @@
 
     <table>
         <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>location</th>
+            <th>Part Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Current Inventory</th>
+            <th>Min</th>
+            <th>Max</th>
         </tr>
-        {% for company in company_list %}
+        {% for part in parts_list %}
         <tr>
-            <td><a href="/inventory/{{ company.id }}/">{{ company.id }}</a></td>
-            <td>{{ company.name }}</td>
-            <td>{{ company.location }}</td>
+            <td>{{ part.id }}</td>
+            <td>{{ part.name }}</td>
+            <td>{{ part.price }}</td>
+            <td>{{ part.on_hand }}</td>
+            <td>{{ part.min }}</td>
+            <td>{{ part.max }}</td>
         </tr>
         {%  endfor %}
     </table>

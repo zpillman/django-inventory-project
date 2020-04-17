@@ -18,7 +18,7 @@ class Company(models.Model):
 
 
 class Part(models.Model):
-    company_id = models.ForeignKey(Company, on_delete=models.CASCADE, default=0)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, default=0)
     name = models.CharField(max_length=50)
     on_hand = models.IntegerField()
     price = models.FloatField()

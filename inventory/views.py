@@ -18,7 +18,7 @@ def company_view(request):
 
 def inventory_view(request, company_id):
     company = get_object_or_404(Company, pk=company_id)
-    parts_list = Part.objects.filter(company_id_id=company_id)
+    parts_list = Part.objects.filter(company_id=company_id)
     template = loader.get_template('inventory/inventory.html')
     context = {
         'company': company,
