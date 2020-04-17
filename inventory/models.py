@@ -1,14 +1,6 @@
 from django.db import models
 
 
-class Part(models.Model):
-    name = models.CharField(max_length=50)
-    on_hand = models.IntegerField()
-    price = models.IntegerField()
-    min = models.IntegerField()
-    max = models.IntegerField()
-
-
 class Company(models.Model):
     CONTINENTS = (('AF', 'Africa'),
                   ('NA', 'North America'),
@@ -22,6 +14,13 @@ class Company(models.Model):
     location = models.CharField(max_length=2, choices=CONTINENTS, default='NA')
 
     def __str__(self):
-        return self.name, self.location
+        return str(self.name) + ", " + str(self.location)
 
 
+class Part(models.Model):
+    company_id = models.ForeignKey(Company, on_delete=models.CASCADE, default=0)
+    name = models.CharField(max_length=50)
+    on_hand = models.IntegerField()
+    price = models.FloatField()
+    min = models.IntegerField()
+    max = models.IntegerField()

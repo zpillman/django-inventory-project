@@ -18,9 +18,9 @@ from django.urls import path
 
 from inventory import views
 
+app_name = 'inventory'
 urlpatterns = [
     path('', views.company_view, name='index'),
-    path('<int:pk>/', views.inventory_view, name='inventory_view'),
-
+    path('<int:company_id>/', views.inventory_view, name='inventory_view'),
 ]
 
