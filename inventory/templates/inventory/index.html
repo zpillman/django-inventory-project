@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Management System</title>
+</head>
+<body>
+    <h1>Choose a company:</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>location</th>
+        </tr>
+        {% for company in company_list %}
+        <tr>
+            <td><a href="/inventory/{{ company.id }}/">{{ company.id }}</a></td>
+            <td>{{ company.name }}</td>
+            <td>{{ company.location }}</td>
+        </tr>
+        {%  endfor %}
+    </table>
+</body>
+</html>

@@ -37,11 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'inventory.apps.InventoryConfig',
-    'material',
-    'material.frontend',
-    'material.theme.cyan',
-    'viewflow'
+    'inventory.apps.InventoryConfig'
 ]
 
 MIDDLEWARE = [
