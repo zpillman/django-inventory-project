@@ -1,13 +1,18 @@
 <!DOCTYPE html>
+{ % load static }
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Inventory View for {{ company.name }}</title>
+    {% comment %}Bootstrap Stuff{% endcomment %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/bootstrap.css' %}">
 </head>
 <body>
 
     <h1>Inventory View for {{ company.name }}</h1>
 
+    <h3>Parts</h3>
     <table>
         <tr>
             <th>Part Id</th>
@@ -28,5 +33,37 @@
         </tr>
         {%  endfor %}
     </table>
+
+    <h3>Products</h3>
+    <table>
+        <tr>
+            <th>Product Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Current Inventory</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Parts</th>
+        </tr>
+        {% for product in products_list %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.on_hand }}</td>
+            <td>{{ product.min }}</td>
+            <td>{{ product.max }}</td>
+            <td>Stub</td>
+        </tr>
+        {%  endfor %}
+    </table>
+
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="{% static 'inventory/jquery.js' %}"></script>
+    <!-- Popper -->
+    <script type="text/javascript" src="{% static 'inventory/popper.js' %}"></script>
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="{% static 'inventory/bootstrap.js' %}"></script>
 </body>
 </html>

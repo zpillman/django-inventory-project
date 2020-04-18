@@ -24,3 +24,13 @@ class Part(models.Model):
     price = models.FloatField()
     min = models.IntegerField()
     max = models.IntegerField()
+
+
+class Product(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, default=0)
+    name = models.CharField(max_length=50)
+    parts = models.ManyToManyField(Part)
+    on_hand = models.IntegerField()
+    price = models.FloatField()
+    min = models.IntegerField()
+    max = models.IntegerField()
