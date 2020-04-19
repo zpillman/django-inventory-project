@@ -20,7 +20,11 @@ from inventory import views
 
 app_name = 'inventory'
 urlpatterns = [
+    # ex: /inventory/
     path('', views.company_view, name='index'),
+    # ex: /inventory/1
     path('<int:company_id>/', views.inventory_view, name='inventory_view'),
+    path('<int:company_id>/part/<int:part_id>/', views.edit_part_view, name='edit_part_view'),
+    path('<int:company_id>/product/<int:product_id>/', views.edit_product_view, name='edit_product_view')
 ]
 

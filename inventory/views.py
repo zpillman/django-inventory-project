@@ -29,3 +29,24 @@ def inventory_view(request, company_id):
     return HttpResponse(template.render(context, request))
 
 
+def edit_part_view(request, company_id, part_id):
+    company = get_object_or_404(Company, pk=company_id)
+    part = get_object_or_404(Part, pk=part_id)
+    template = loader.get_template('inventory/edit_part.html')
+    context = {
+        'company': company,
+        'part': part
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def edit_product_view(request, company_id, product_id):
+    company = get_object_or_404(Company, pk=company_id)
+    product = get_object_or_404(Product, pk=product_id)
+    template = loader.get_template('inventory/edit_product.html')
+    context = {
+        'company': company,
+        'product': product
+    }
+    return HttpResponse(template.render(context, request))
+

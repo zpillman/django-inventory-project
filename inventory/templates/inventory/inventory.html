@@ -1,63 +1,91 @@
 <!DOCTYPE html>
-{ % load static }
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Inventory View for {{ company.name }}</title>
     {% comment %}Bootstrap Stuff{% endcomment %}
+    {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{% static 'inventory/bootstrap.css' %}">
 </head>
-<body>
+<body class="">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4 text-center">Inventory View for {{ company.name }}</h1></div>
+        </div>
 
-    <h1>Inventory View for {{ company.name }}</h1>
+    <div class="row">
+        <div class="col-6">
+            <h3>Parts</h3>
+        </div>
+        <div class="col-6">
+            <h3>Products</h3>
+        </div>
+    </div>
 
-    <h3>Parts</h3>
-    <table>
-        <tr>
-            <th>Part Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Current Inventory</th>
-            <th>Min</th>
-            <th>Max</th>
-        </tr>
+
+    <div class="row">
+    <div class="col-6">
+        <table class="table table-hover table-sm table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Part Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Current Stock</th>
+                <th scope="col">Min</th>
+                <th scope="col">Max</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for part in parts_list %}
-        <tr>
-            <td>{{ part.id }}</td>
-            <td>{{ part.name }}</td>
-            <td>{{ part.price }}</td>
-            <td>{{ part.on_hand }}</td>
-            <td>{{ part.min }}</td>
-            <td>{{ part.max }}</td>
-        </tr>
+            <tr style="transform: rotate(0);">
+                <th scope="row"><a href="{%  url 'inventory:edit_part_view' company.id part.id %}" class="stretched-link">{{ part.id }}</a></th>
+                <td>{{ part.name }}</td>
+                <td>{{ part.price }}</td>
+                <td>{{ part.on_hand }}</td>
+                <td>{{ part.min }}</td>
+                <td>{{ part.max }}</td>
+            </tr>
         {%  endfor %}
-    </table>
+        </tbody>
 
-    <h3>Products</h3>
-    <table>
-        <tr>
-            <th>Product Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Current Inventory</th>
-            <th>Min</th>
-            <th>Max</th>
-            <th>Parts</th>
-        </tr>
-        {% for product in products_list %}
-        <tr>
-            <td>{{ product.id }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.on_hand }}</td>
-            <td>{{ product.min }}</td>
-            <td>{{ product.max }}</td>
-            <td>Stub</td>
-        </tr>
+        </table>
+    </div>
+    <div class="col-6">
+        <table class="table table-hover table-sm table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Current Stock</th>
+                <th scope="col">Min</th>
+                <th scope="col">Max</th>
+                <th scope="col">Parts</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products_list %}
+            <tr style="transform: rotate(0);">
+                <th scope="row"><a href="{%  url 'inventory:edit_product_view' company.id product.id %}" class="stretched-link">{{ product.id }}</a></th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.on_hand }}</td>
+                <td>{{ product.min }}</td>
+                <td>{{ product.max }}</td>
+                <td>Stub</td>
+            </tr>
         {%  endfor %}
-    </table>
+        </tbody>
 
+    </table>
+    </div>
+
+    </div>
+
+</div>
 
     <!-- jQuery -->
     <script type="text/javascript" src="{% static 'inventory/jquery.js' %}"></script>
