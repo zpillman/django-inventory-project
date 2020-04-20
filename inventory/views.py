@@ -50,3 +50,28 @@ def edit_product_view(request, company_id, product_id):
     }
     return HttpResponse(template.render(context, request))
 
+
+def save_part(request, part_id):
+    part = get_object_or_404(Part, pk=part_id)
+    company = get_object_or_404(Company, pk=part.company.id)
+    template = loader.get_template('inventory/inventory.html')
+    context = {
+        'company': company
+    }
+    try:
+        choices = {
+            'name': request.POST['part_name'],
+            'current_stock': request.POST['part_stock'],
+            'price': request.POST['part_price'],
+            'min': request.POST['part_min'],
+            'max': request.POST['part_max']
+        }
+
+        print(choices)
+    except KeyError:
+        # Redisplay the question voting form.
+        return render(request, 'inventory/edit_part.html', {
+            'part_id': part_id,
+            'error_message': "Error processing",
+        })
+    return HttpResponseRedirect(reverse('inventory:inventory_view', args=company_id))
