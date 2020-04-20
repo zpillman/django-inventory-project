@@ -17,7 +17,7 @@
         
         <div class="row">
             <div class="col">
-                <form action="{% url '' company.id product.id %}" method="post">
+                <form action="{% url 'inventory:edit_product_view' company.id product.id %}" method="post">
                     {% csrf_token %}
                     <div class="form-group row">
                         <label for="product_id" class="col-2 col-form-label">Product Id</label>
